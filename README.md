@@ -25,6 +25,13 @@
 
 ---
 
+## 스크린샷
+
+<img src="https://github.com/user-attachments/assets/ca3f1492-8816-43c2-9ca7-39bc63ccb11d" width="30%" height="30%"> | <img src="https://github.com/user-attachments/assets/ac025a31-8fb1-4b7a-b0b5-348a6cbbcedc" width="30%" height="30%"> | <img src="https://github.com/user-attachments/assets/35ff480e-1a11-41e7-8710-0d8b53b4aa98" width="30%" height="30%"> | <img src="https://github.com/user-attachments/assets/758c3c56-49f9-447e-8b67-f738b677ea45" width="30%" height="30%">
+---|---|---|---|
+
+---
+
 ## 사용 방법
 
 1. 입영일을 선택합니다.
