@@ -1,13 +1,13 @@
-# 얼마나 쉴 수 있지? v1.0.0
+# 얼마나 쉴 수 있지?
 
 복무일 계산과 연가/병가 관리 기능을 갖춘 Android 앱입니다.  
 전역일까지 남은 기간과 남은 휴가 일수를 직관적으로 확인할 수 있습니다.
 
 ---
 
-## 다운로드
+## 다운로드 & Changelog
 
-### [v1.0.0](https://github.com/HotSpicyMango/GONG-IK/releases/tag/v1.0.0) <br>
+### [v1.0.1](https://github.com/HotSpicyMango/GONG-IK/releases/tag/v1.0.1) <br>
 ※ 설치 전 '출처를 알 수 없는 앱' 설치 허용이 필요합니다.
 
 ---
