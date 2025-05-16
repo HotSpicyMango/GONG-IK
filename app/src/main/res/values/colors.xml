@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="button_primary">#1976D2</color>
+    <color name="button_reset">#D32F2F</color>
+
+    <color name="progress_leave1">#388E3C</color>
+    <color name="progress_leave2">#1976D2</color>
+    <color name="progress_sick">#F57C00</color>
+
+    <color name="background">#FAFAFA</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="progress_accent">#90CAF9</color>        <!-- 파스텔 파랑 -->
+    <color name="progress_background">#E0E0E0</color>     <!-- 밝은 회색 -->
+    <color name="teal_700">#018786</color>
+
+</resources>
