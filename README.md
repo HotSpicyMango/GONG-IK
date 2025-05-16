@@ -63,7 +63,7 @@
 ## 📜 License
 
 This project is licensed under the MIT License.  
-Copyright (c) 2025 매운맛 망고
+Copyright (c) 2025 MINGYU OH
 
 Permission is hereby granted, free of charge, to any person obtaining a copy  
 of this software and associated documentation files (the "Software"), to deal  
