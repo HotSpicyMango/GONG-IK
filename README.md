@@ -5,7 +5,7 @@
 
 ---
 
-## 다운로드
+## 다운로드 & Changelog
 
 ### [v1.0.1](https://github.com/HotSpicyMango/GONG-IK/releases/tag/v1.0.1) <br>
 ※ 설치 전 '출처를 알 수 없는 앱' 설치 허용이 필요합니다.
