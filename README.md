@@ -5,7 +5,7 @@
 
 ---
 
-다운로드
+다운로드 : https://github.com/HotSpicyMango/GONG-IK/releases/tag/v1.0.0
 
 ---
 
