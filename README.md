@@ -7,7 +7,7 @@
 
 ## 📦 다운로드
 
-▶️ **[최신 APK 받기]()**  
+▶️ **[최신 APK 받기](https://github.com/HotSpicyMango/GONG-IK/releases/tag/v1.0.0)**
 (설치 전 '출처를 알 수 없는 앱' 설치 허용이 필요합니다)
 
 ---
