@@ -1,5 +1,8 @@
 # 얼마나 쉴 수 있지?
 
+<img src="https://img.shields.io/badge/platform-Android-blue" />
+<img src="https://img.shields.io/badge/language-Java+Html-red" />
+<img src="https://img.shields.io/badge/minSdk-29-brightgreen" />
 복무일 계산과 연가/병가 관리 기능을 갖춘 Android 앱입니다.  
 전역일까지 남은 기간과 남은 휴가 일수를 직관적으로 확인할 수 있습니다.
 
