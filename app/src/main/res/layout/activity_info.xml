@@ -16,5 +16,5 @@
         android:textIsSelectable="false"
         android:longClickable="false"
         android:lineSpacingExtra="4dp"
-        tools:text="info.html 내용이 여기에 표시됩니다." />
+        tools:text="info.html" />
 </ScrollView>

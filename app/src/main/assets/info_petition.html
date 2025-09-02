@@ -1,79 +1,132 @@
 <!DOCTYPE html>
 
 <html lang="ko">
-<head>
-<meta charset="utf-8"/>
-<title>청원휴가</title>
+    <head>
+        <meta charset="utf-8"/>
+        <title>청원휴가</title>
 
-<style>
-    @font-face {
-      font-family: 'Pretendard';
-      src: url("file:///android_asset/fonts/Pretendard-Regular.ttf") format("truetype");
-    }
-    body {
-      font-family: 'Pretendard', sans-serif;
-      line-height: 1.4;
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 12px;
-      background-color: #ffffff;
-      color: #111111;
-    }
-    .title-main {
-      color: #0000cc;
-      font-weight: bold;
-    }
-    .title-sub {
-      color: #0077ff;
-      font-weight: bold;
-    }
-    @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #121212;
-        color: #eeeeee;
-      }
-      .title-main {
-        color: #66aaff;
-      }
-      .title-sub {
-        color: #66ccff;
-      }
-    }
-    </style></head>
-<body>
-<p class="title-main">청원휴가</p>
-<p class="title-sub">■ 개요</p>
-<ul>
-<li>중대한 <strong style="color: #d32f2f;">경조사</strong>에 대해 부여되는 휴가 제도</li>
-<li>청원휴가 대상이 아닌 경조사는 <span style="color: #f57c00;">연가로 처리</span></li>
-<li>해당일로부터 지정된 일수만 사용 가능 (연기 불가)</li>
-<li>공휴일·주말 포함되어도 별도 보전 없음</li>
-</ul>
-<p class="title-sub">■ 사용 시 주의사항</p>
-<ul>
-<li><strong style="color: #d32f2f;">사건 발생일</strong>부터 바로 사용해야 함</li>
-<li>청원휴가 후 <span style="color: #f57c00;">증빙서류 제출 필수</span> (예: 가족관계증명서, 사망진단서 등)</li>
-<li>연가가 없고 특별휴가도 못 받을 경우 복무기간 연장됨</li>
-</ul>
-<p class="title-sub">■ 청원휴가 일수 예시</p>
-<ul>
-<li><strong style="color: #d32f2f;">본인 결혼</strong>: 5일</li>
-<li><strong style="color: #d32f2f;">본인/배우자 부모 사망</strong>: 5일</li>
-<li>부모·형제자매·배우자 위독: 3일</li>
-<li>직계비속·조부모·외조부모 사망: 3일</li>
-<li>형제자매 사망: 1일</li>
-<li><strong style="color: #d32f2f;">배우자 출산</strong>: 10일 (쌍둥이 이상 출산 시 15일)</li>
-<li>배우자 유산/사산: 3일</li>
-</ul>
-<p class="title-sub">■ 자녀 관련 청원휴가</p>
-<ul>
-<li>자녀 돌봄 사유 발생 시: <strong style="color: #d32f2f;">연 10일 이내</strong></li>
-<li>자녀 병원 동행, 상담, 행사 참여 등 포함</li>
-<li>5세 이하 자녀: 하루 최대 2시간 육아시간 가능</li>
-</ul>
-<p class="title-sub">■ 기타 안내</p>
-<ul>
-<li>경조사가 예상된다면 <span style="color: #f57c00;">사전에 복무지도관과 상담</span> 권장</li>
-</ul>
-</body>
+        <style>
+            @font-face {
+                font-family: 'Pretendard';
+                src: url("file:///android_asset/fonts/pretendard_regular.woff2") format("woff2");
+                font-weight: 400;
+                font-display: swap;
+            }
+            @font-face {
+                font-family: 'Pretendard';
+                src: url("file:///android_asset/fonts/pretendard_bold.woff2") format("woff2");
+                font-weight: 700;
+                font-display: swap;
+            }
+            body {
+                font-family: 'Pretendard', sans-serif;
+                font-size: 17px;
+                line-height: 1.6;
+                max-width: 800px;
+                margin: 20px auto;
+                padding: 16px;
+                background-color: #ffffff;
+                color: #111111;
+            }
+            .title-main {
+                color: #0057d9;
+                font-weight: bold;
+            }
+            .title-sub {
+                color: #0057d9;
+                font-weight: bold;
+            }
+            h1.title-main {
+                font-size: 1.5rem;
+                margin: 0 0 12px;
+                font-weight: bold;
+            }
+            h2.title-sub {
+                font-size: 1.125rem;
+                margin: 24px 0 8px;
+                font-weight: bold;
+            }
+            ol,
+            ul {
+                padding-left: 20px;
+            }
+            li + li {
+                margin-top: 6px;
+            }
+            .danger {
+                color: #B00020;
+                font-weight: bold;
+            }
+            .warning {
+                color: #E65100;
+                font-weight: bold;
+            }
+            @media (prefers-color-scheme: dark) {
+                body {
+                    background-color: #121212;
+                    color: #eeeeee;
+                }
+                .title-main {
+                    color: #66aaff;
+                }
+                .title-sub {
+                    color: #66aaff;
+                }
+                .danger {
+                    color: #CF6679;
+                }
+                .warning {
+                    color: #FFB74D;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="title-main">청원휴가</h1>
+        <h2 class="title-sub">■ 개요</h2>
+        <ul>
+            <li>중대한
+                <strong class="danger">경조사</strong>에 대해 부여되는 휴가 제도</li>
+            <li>청원휴가 대상이 아닌 경조사는
+                <span class="warning">연가로 처리</span></li>
+            <li>해당일로부터 지정된 일수만 사용 가능 (연기 불가)</li>
+            <li>공휴일·주말 포함되어도 별도 보전 없음</li>
+        </ul>
+        <h2 class="title-sub">■ 사용 시 주의사항</h2>
+        <ul>
+            <li>
+                <strong class="danger">사건 발생일</strong>부터 바로 사용해야 함</li>
+            <li>청원휴가 후
+                <span class="warning">증빙서류 제출 필수</span>
+                (예: 가족관계증명서, 사망진단서 등)</li>
+            <li>연가가 없고 특별휴가도 못 받을 경우 복무기간 연장됨</li>
+        </ul>
+        <h2 class="title-sub">■ 청원휴가 일수 예시</h2>
+        <ul>
+            <li>
+                <strong class="danger">본인 결혼</strong>: 5일</li>
+            <li>
+                <strong class="danger">본인/배우자 부모 사망</strong>: 5일</li>
+            <li>부모·형제자매·배우자 위독: 3일</li>
+            <li>직계비속·조부모·외조부모 사망: 3일</li>
+            <li>형제자매 사망: 1일</li>
+            <li>
+                <strong class="danger">배우자 출산</strong>: 10일 (쌍둥이 이상 출산 시 15일)</li>
+            <li>배우자 유산/사산: 3일</li>
+        </ul>
+        <h2 class="title-sub">■ 자녀 관련 청원휴가</h2>
+        <ul>
+            <li>자녀 돌봄 사유 발생 시:
+                <strong class="danger">연 10일 이내</strong>
+            </li>
+            <li>자녀 병원 동행, 상담, 행사 참여 등 포함</li>
+            <li>5세 이하 자녀: 하루 최대 2시간 육아시간 가능</li>
+        </ul>
+        <h2 class="title-sub">■ 기타 안내</h2>
+        <ul>
+            <li>경조사가 예상된다면
+                <span class="warning">사전에 복무지도관과 상담</span>
+                권장</li>
+        </ul>
+    </body>
 </html>

@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public String toDisplayString(String label) {
-            return label + " 잔여 : " + days + "일 " + hours + "시간 " + minutes + "분";
+            return label + " : " + days + "일 " + hours + "시간 " + minutes + "분";
         }
     }
 
@@ -124,9 +124,9 @@ public class MainActivity extends AppCompatActivity {
     private final int SERVICE_MONTHS = 21;
 
     private void updateLeaveDisplay() {
-        textRemaining1.setText(leave1Year.toDisplayString("1년차 연가"));
-        textRemaining2.setText(leave2Year.toDisplayString("2년차 연가"));
-        textRemaining3.setText(sickLeave.toDisplayString("병가"));
+        textRemaining1.setText(leave1Year.toDisplayString("총 15일 중 남은 1년차 연가"));
+        textRemaining2.setText(leave2Year.toDisplayString("총 13일 중 남은 2년차 연가"));
+        textRemaining3.setText(sickLeave.toDisplayString("총 30일 중 남은 병가"));
     }
 
     private TextView textRemaining1, textRemaining2, textRemaining3;
@@ -147,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
                 getWindow().getDecorView().setSystemUiVisibility(0);
             }
         }
-
 
         // ✅ 1. View 바인딩 먼저
         textViewEnlistDate = findViewById(R.id.textViewDischargeDate2);
