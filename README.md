@@ -10,7 +10,7 @@
 
 ## 다운로드 & Changelog
 
-### [<다운로드 v1.0.2>](https://github.com/HotSpicyMango/GONG-IK/releases/download/1.0.2/1.0.2.apk) <br>
+### [다운로드 v1.0.2](https://github.com/HotSpicyMango/GONG-IK/releases/download/1.0.2/1.0.2.apk) <br>
 ※ 설치 전 '출처를 알 수 없는 앱' 설치 허용이 필요합니다.
 
 ---
