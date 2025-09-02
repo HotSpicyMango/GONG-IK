@@ -1,4 +1,5 @@
 <resources>
-    <color name="progress_accent">#64B5F6</color>        <!-- 더 어두운 파랑 -->
-    <color name="progress_background">#424242</color>    <!-- 다크모드용 중간 회색 -->
+    <color name="progress_accent">#A5D6A7</color>        <!-- 더 어두운 파랑 -->
+    <color name="progress_background">#2E7D32</color>
+    <color name="progress_accent2">#E57373</color>
 </resources>

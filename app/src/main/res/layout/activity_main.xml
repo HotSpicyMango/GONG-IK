@@ -6,6 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
     <ScrollView
@@ -28,43 +29,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="32dp" />
 
-            <!-- 입대일 선택 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="8dp">
+                android:padding="0dp">
 
                 <Button
                     android:id="@+id/buttonSelectDate"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="5dp"
                     android:backgroundTint="@color/button_primary"
                     android:text="입영일 선택"
+                    android:layout_weight="1"
                     android:textColor="@android:color/white" />
 
                 <Button
                     android:id="@+id/button2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_marginBottom="16dp"
                     android:backgroundTint="@color/button_reset"
                     android:text="RST"
+                    android:layout_weight="1"
                     android:textColor="@android:color/white" />
 
                 <Button
                     android:id="@+id/btnGuide"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="유용한 정보" />
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:text="더보기" />
 
             </LinearLayout>
-
-            <!-- 전역일 표시 -->
 
             <TextView
                 android:id="@+id/textViewDischargeDate2"
@@ -99,12 +101,11 @@
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
-                android:backgroundTint="@color/progress_background"
                 android:max="100"
                 android:progress="0"
-                android:progressTint="@color/progress_accent" />
+                android:progressTint="@color/progress_accent2" />
 
             <TextView
                 android:id="@+id/textViewProgressPercent"
@@ -142,7 +143,7 @@
                             android:id="@+id/title1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1년차 연가 [15일]"
+                            android:text="1년차 연가"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -151,7 +152,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="1년차 연차 잔여 : 15일 0시간 0분" />
+                            android:text="총 15일 중 남은 1년차 연차 : 15일 0시간 0분" />
 
                         <ProgressBar
                             android:id="@+id/progress1"
@@ -235,7 +236,7 @@
                             android:id="@+id/title2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="2년차 연가 [13일]"
+                            android:text="2년차 연가"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -244,7 +245,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="2년차 연차 잔여 : 13일 0시간 0분" />
+                            android:text="남은 2년차 연차 : 13일 0시간 0분" />
 
                         <ProgressBar
                             android:id="@+id/progress2"
@@ -328,7 +329,7 @@
                             android:id="@+id/title3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="병가 [30일]"
+                            android:text="병가"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -337,7 +338,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="병가 잔여 : 30일 0시간 0분" />
+                            android:text="남은 병가 : 30일 0시간 0분" />
 
                         <ProgressBar
                             android:id="@+id/progress3"

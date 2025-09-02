@@ -183,12 +183,12 @@ public class MainActivity extends AppCompatActivity {
 
         Button buttonReset = findViewById(R.id.button2);
 
-        // ✅ 2. 휴가 Progress 최대값
+        // 휴가 Progress 최대값
         progress1.setMax(15 * 480);
         progress2.setMax(13 * 480);
         progress3.setMax(30 * 480);
 
-        // ✅ 3. 핸들러 정의
+        //핸들러 정의
         runnable = new Runnable() {
             @Override
             public void run() {
@@ -261,18 +261,30 @@ public class MainActivity extends AppCompatActivity {
             leave1Year.subtract(parse(editDays1), parse(editHours1), parse(editMinutes1));
             updateLeaveDisplay();
             progress1.setProgress(leave1Year.toMinutes());
+
+            editDays1.setText("");
+            editHours1.setText("");
+            editMinutes1.setText("");
         });
 
         buttonMinus2.setOnClickListener(v -> {
             leave2Year.subtract(parse(editDays2), parse(editHours2), parse(editMinutes2));
             updateLeaveDisplay();
             progress2.setProgress(leave2Year.toMinutes());
+
+            editDays2.setText("");
+            editHours2.setText("");
+            editMinutes2.setText("");
         });
 
         buttonMinus3.setOnClickListener(v -> {
             sickLeave.subtract(parse(editDays3), parse(editHours3), parse(editMinutes3));
             updateLeaveDisplay();
             progress3.setProgress(sickLeave.toMinutes());
+
+            editDays3.setText("");
+            editHours3.setText("");
+            editMinutes3.setText("");
         });
 
         buttonReset.setOnClickListener(v -> {
@@ -301,7 +313,7 @@ public class MainActivity extends AppCompatActivity {
         textViewEnlistDate.setText("입영일 : ");
         textViewDischargeDate.setText("전역일 : ");
         textViewDday.setText("D - ");
-        textViewProgressPercent.setText("0.000000000%");
+        textViewProgressPercent.setText("0.0000000%");
         progressBar.setProgress(0);
         handler.removeCallbacks(runnable);
 
@@ -386,7 +398,7 @@ public class MainActivity extends AppCompatActivity {
     private void updateProgress() {
         if (enlistDate == null || dischargeDate == null) {
             textViewDday.setText("D -");
-            textViewProgressPercent.setText("0.000000000%");
+            textViewProgressPercent.setText("0.0000000%");
             progressBar.setProgress(0);
             return;
         }
@@ -397,11 +409,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (nowMillis < enlistMillis) {
             textViewDday.setText("입대 전");
-            textViewProgressPercent.setText("0.000000000%");
+            textViewProgressPercent.setText("0.0000000%");
             progressBar.setProgress(0);
         } else if (nowMillis >= dischargeMillis) {
             textViewDday.setText("전역");
-            textViewProgressPercent.setText("100.000000000%");
+            textViewProgressPercent.setText("100.0000000%");
             progressBar.setProgress(progressBar.getMax());
         } else {
             long diffMillis = dischargeMillis - nowMillis;
@@ -417,7 +429,7 @@ public class MainActivity extends AppCompatActivity {
             int progressValue = (int) (progress * progressBar.getMax());
             progressBar.setProgress(progressValue);
 
-            String percentStr = String.format(Locale.getDefault(), "%.9f%%", progress * 100);
+            String percentStr = String.format(Locale.getDefault(), "%.7f%%", progress * 100);
             textViewProgressPercent.setText(percentStr);
         }
     }

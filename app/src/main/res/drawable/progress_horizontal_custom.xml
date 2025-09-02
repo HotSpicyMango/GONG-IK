@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <!-- 남은 부분 -->
+        <item android:id="@android:id/background">
+            <shape android:shape="rectangle">
+                <size android:height="24dp" />  <!-- 바 높이 지정 -->
+                <solid android:color="@color/progress_background" />
+            </shape>
+        </item>
+
+        <!-- 진행 중 부분 -->
+        <item android:id="@android:id/progress">
+            <clip>
+                <shape android:shape="rectangle">
+                    <size android:height="24dp" />  <!-- 바 높이 지정 -->
+                    <solid android:color="@color/progress_accent2" />
+                </shape>
+            </clip>
+        </item>
+
+    </layer-list>
+</selector>
