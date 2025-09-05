@@ -29,8 +29,9 @@ public class WebViewFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         WebView webView = new WebView(requireContext());
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setAllowFileAccess(true);
+        webView.getSettings().setJavaScriptEnabled(false);
+        webView.getSettings().setAllowFileAccess(false);
+        webView.getSettings().setAllowContentAccess(false);
         webView.getSettings().setAllowFileAccessFromFileURLs(true);
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setBuiltInZoomControls(true);

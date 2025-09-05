@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- One UI Blue (밝고 선명한 블루) -->
+    <color name="oneui_primary">#036DF6</color>
+    <color name="oneui_onPrimary">#FFFFFF</color>
+    <color name="oneui_primaryContainer">#DBEAFF</color>
+    <color name="oneui_onPrimaryContainer">#0A2A6B</color>
+
+    <!-- 액센트(초점/확인) -->
+    <color name="oneui_secondary">#0BB5FF</color>
+    <color name="oneui_onSecondary">#001A2B</color>
+
+    <!-- 표면/배경(넓은 흰 바탕 + 미세 틴트 카드) -->
+    <color name="oneui_background">#FFFFFF</color>
+    <color name="oneui_onBackground">#111827</color>
+    <color name="oneui_surface">#FFFFFF</color>
+    <color name="oneui_onSurface">#111827</color>
+    <color name="oneui_surfaceVariant">#F5F7FA</color>
+    <color name="oneui_onSurfaceVariant">#4B5563</color>
+
+    <!-- 경계/구분선 -->
+    <color name="oneui_outline">#E5E7EB</color>
+
+    <!-- 에러 -->
+    <color name="oneui_error">#E53935</color>
+    <color name="oneui_onError">#FFFFFF</color>
+
+    <!-- 리플(One UI는 은은한 잔상) -->
+    <color name="oneui_ripple">#1F000000</color>
+</resources>

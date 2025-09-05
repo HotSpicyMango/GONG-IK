@@ -11,6 +11,10 @@ public class GuidePagerAdapter extends FragmentStateAdapter {
         super(fragmentActivity);
     }
 
+    public GuidePagerAdapter(@NonNull Fragment fragment) {
+        super(fragment);
+    }
+
     @NonNull
     @Override
     public Fragment createFragment(int position) {

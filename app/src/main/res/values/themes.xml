@@ -1,8 +1,23 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:fontFamily">@font/pretendard</item>
+        <item name="colorPrimary">@color/oneui_primary</item>
+        <item name="colorOnPrimary">@color/oneui_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/oneui_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/oneui_onPrimaryContainer</item>
+        <item name="colorSecondary">@color/oneui_secondary</item>
+        <item name="colorOnSecondary">@color/oneui_onSecondary</item>
+        <item name="android:colorBackground">@color/oneui_background</item>
+        <item name="colorSurface">@color/oneui_surface</item>
+        <item name="colorOnSurface">@color/oneui_onSurface</item>
+        <item name="colorSurfaceVariant">@color/oneui_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/oneui_onSurfaceVariant</item>
+        <item name="colorOutline">@color/oneui_outline</item>
+        <item name="colorError">@color/oneui_error</item>
+        <item name="colorOnError">@color/oneui_onError</item>
+        <item name="colorControlHighlight">@color/oneui_ripple</item>
     </style>
 
-    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
+    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication"/>
 </resources>
