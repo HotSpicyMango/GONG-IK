@@ -9,7 +9,7 @@
     <color name="progress_leave1">#388E3C</color>
     <color name="progress_leave2">#1976D2</color>
     <color name="progress_sick">#F57C00</color>
-
+    <color name="card_bg">#FFFFFF</color>
     <color name="background">#FAFAFA</color>
     <color name="text_primary">#212121</color>
     <color name="text_secondary">#757575</color>

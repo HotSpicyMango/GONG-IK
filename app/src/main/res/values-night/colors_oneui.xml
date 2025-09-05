@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- One UI Night -->
+    // 다크 모드
     <color name="oneui_primary">#5AA7FF</color>
     <color name="oneui_onPrimary">#FFFFFF</color>
     <color name="oneui_primaryContainer">#0D2C57</color>
     <color name="oneui_onPrimaryContainer">#D6E7FF</color>
-
     <color name="oneui_secondary">#45CFFF</color>
     <color name="oneui_onSecondary">#001623</color>
-
     <color name="oneui_background">#0C0D10</color>
     <color name="oneui_onBackground">#E5E7EB</color>
     <color name="oneui_surface">#111216</color>
     <color name="oneui_onSurface">#E5E7EB</color>
     <color name="oneui_surfaceVariant">#1A1B20</color>
     <color name="oneui_onSurfaceVariant">#9CA3AF</color>
-
+    <color name="card_bg">#1E1E1E</color>
     <color name="oneui_outline">#2A2C33</color>
-
     <color name="oneui_error">#FF6B6B</color>
     <color name="oneui_onError">#2B0000</color>
-
     <color name="oneui_ripple">#33FFFFFF</color>
+    <color name="mainbar">#2F2F2F</color>
+    <color name="progressmain">#26A69A</color> // 다크모드 : 메인 프로그레싱바 색상
 </resources>

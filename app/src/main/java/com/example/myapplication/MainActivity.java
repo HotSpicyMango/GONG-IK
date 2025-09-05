@@ -6,7 +6,6 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,20 +16,18 @@ import android.view.inputmethod.InputMethodManager;
 import android.view.View;
 import android.content.Context;
 import android.view.Choreographer;
-import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-
 import android.view.ViewGroup;
 import android.view.ViewConfiguration;
 
+import androidx.core.content.ContextCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -196,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
         textViewProgressPercent = findViewById(R.id.textViewProgressPercent);
         progressBar = findViewById(R.id.progressBar);
         progressBar.setMax(10000);
-
+        progressBar.setProgressDrawable(ContextCompat.getDrawable(this, R.drawable.progress_bar_rounded));
         textRemaining1 = findViewById(R.id.remaining1);
         textRemaining2 = findViewById(R.id.remaining2);
         textRemaining3 = findViewById(R.id.remaining3);
@@ -614,7 +611,7 @@ public class MainActivity extends AppCompatActivity {
             int progressValue = (int) (progress * progressBar.getMax());
             progressBar.setProgress(progressValue);
 
-            String percentStr = String.format(Locale.getDefault(), "%.7f%%", progress * 100);
+            String percentStr = String.format(Locale.getDefault(), "%.6f%%", progress * 100);
             textViewProgressPercent.setText(percentStr);
         }
         updateFirstYearLockUI();
