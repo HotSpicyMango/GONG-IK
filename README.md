@@ -1,4 +1,4 @@
-# 얼마나 쉴 수 있지?
+# Pub-Serve
 
 <img src="https://img.shields.io/badge/platform-Android-blue" />
 <img src="https://img.shields.io/badge/language-Java+Html-red" />
@@ -10,7 +10,7 @@
 
 ## 다운로드
 
-### [다운로드 v1.2](https://github.com/HotSpicyMango/GONG-IK/releases/download/1.2/1.2.apk)<br>
+### [다운로드 v1.2](https://github.com/HotSpicyMango/GONG-IK/releases/download/1.2/pub-serve.apk)<br>
 ※ 설치 전 '출처를 알 수 없는 앱' 설치 허용이 필요합니다.
 ### [변경사항](https://github.com/HotSpicyMango/GONG-IK/releases/tag/1.2)<br>
 ※ 클릭 시 이동됩니다.
