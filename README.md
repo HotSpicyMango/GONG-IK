@@ -1,4 +1,4 @@
-# 얼마나 쉴 수 있지?
+# Pub-Serve
 
 <img src="https://img.shields.io/badge/platform-Android-blue" />
 <img src="https://img.shields.io/badge/language-Java+Html-red" />
