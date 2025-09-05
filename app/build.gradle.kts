@@ -7,7 +7,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.myapplication"
+        applicationId = "com.mango.pubserve"
         minSdk = 29
         targetSdk = 35
         versionCode = 5
