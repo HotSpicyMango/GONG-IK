@@ -8,16 +8,18 @@
 
 ---
 
-## 다운로드 & Changelog
+## 다운로드
 
-### [v1.0.1](https://github.com/HotSpicyMango/GONG-IK/releases/tag/v1.0.1) <br>
+### [다운로드 v1.0.2](https://github.com/HotSpicyMango/GONG-IK/releases/download/1.0.2/1.0.2.apk) <br>
 ※ 설치 전 '출처를 알 수 없는 앱' 설치 허용이 필요합니다.
+### [변경사항](https://github.com/HotSpicyMango/GONG-IK/releases/tag/1.0.2) <br>
+※ 클릭 시 이동됩니다.
 
 ---
 
 ## 주요 기능
 
-- 입대일 입력 시 전역일 자동 계산 (641일 기준)
+- 입대일 입력 시 전역일 자동 계산
 - 연가(1년차/2년차), 병가를 일·시간·분 단위로 관리
 - 실시간 D-Day 및 복무 진행률 표시
 - 자동 저장 및 전체 초기화 기능
