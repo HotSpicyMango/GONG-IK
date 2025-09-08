@@ -19,5 +19,5 @@
     <color name="oneui_onError">#2B0000</color>
     <color name="oneui_ripple">#33FFFFFF</color>
     <color name="mainbar">#2F2F2F</color>
-    <color name="progressmain">#26A69A</color> // 다크모드 : 메인 프로그레싱바 색상
+    <color name="progressmain">#C8C8C8</color> // 다크모드 : 메인 프로그레싱바 색상
 </resources>

@@ -15,7 +15,6 @@
             <clip>
                 <shape android:shape="rectangle">
                     <size android:height="24dp" />  <!-- 바 높이 지정 -->
-                    <solid android:color="@color/progress_accent2" />
                 </shape>
             </clip>
         </item>

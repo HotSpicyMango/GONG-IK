@@ -32,19 +32,32 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+/**
+ * 메인 화면 액티비티
+ * - 입영일/전역일 저장 및 진행률 계산
+ * - 1년차/2년차 연가와 병가 잔여분 관리
+ * - 최초 실행 가이드(바텀시트) 표시 및 날짜 선택
+ * - 키보드/터치 UX 최적화(탭 시 키보드 닫기, 스크롤 시 유지)
+ */
 public class MainActivity extends AppCompatActivity {
 
+    // 앱 공용 환경설정 이름(최초 실행 여부 등)
     private static final String PREFS = "app_prefs";
+    // 최초 실행 여부 플래그 키
     private static final String PREF_FIRST_RUN = "first_run";
 
+    // === 상단 날짜/진행률 UI 컴포넌트 ===
     private TextView textViewEnlistDate;
 
     private TextView textViewDischargeDate, textViewDday, textViewProgressPercent;
     private ProgressBar progressBar;
 
+    // 사용자가 선택/복원한 입영일 (자정 기준)
     private Calendar enlistDate = null;
+    // 입영일 + 21개월 - 1일로 계산된 전역일
     private Calendar dischargeDate = null;
 
+    // === 진행률 갱신 및 키보드 제스처 처리용 상태 ===
     private Choreographer.FrameCallback frameCallback;
     private boolean isGuideShowing = false;
     // 터치 제스처 판별용 (스크롤 중에는 키보드 유지)
@@ -53,11 +66,17 @@ public class MainActivity extends AppCompatActivity {
     private int touchSlop;
     private int tapTimeout;
     // === 1년차 카드 제어용 UI 필드 ===
+    // 1년차 연가 카드 루트 레이아웃(잠금 시 반투명 처리)
+    private LinearLayout card1; // 1년차 카드 루트 레이아웃
     private EditText editDays1, editHours1, editMinutes1;
     private Button buttonMinus1;
     private ProgressBar progress1;
-    private LinearLayout card1; // 1년차 카드 루트 레이아웃
 
+    /**
+     * 연가/병가 시간을 일/시간/분 단위로 보관·연산하는 데이터 클래스
+     * - 1일 = 8시간(480분) 기준으로 환산
+     * - 입력 정규화 및 차감(subtract), 분 단위 변환 지원
+     */
     public static class LeaveData {
         private int days;
         private int hours;
@@ -116,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
             this.minutes = totalMinutes % MINUTES_PER_HOUR;
         }
 
+        // 분, 시간 단위를 초과 입력 시 상위 단위로 올림하여 일/시간/분을 정규화
         private void normalize() {
             if (minutes >= MINUTES_PER_HOUR) {
                 hours += minutes / MINUTES_PER_HOUR;
@@ -140,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
     // 복무기간 21개월 고정
     private final int SERVICE_MONTHS = 21;
 
+    // 연가/병가 남은 시간 텍스트를 갱신하고 사용자에게 표시
     private void updateLeaveDisplay() {
         textRemaining1.setText(leave1Year.toDisplayString("총 15일 중 남은 1년차 연가"));
         textRemaining2.setText(leave2Year.toDisplayString("총 13일 중 남은 2년차 연가"));
@@ -148,6 +169,14 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView textRemaining1, textRemaining2, textRemaining3;
 
+    /**
+     * 액티비티 초기화
+     * 1) 시스템 다크/라이트 모드 적용 및 키보드 동작 설정
+     * 2) 최초 실행 가이드 표시 로직 및 결과 수신
+     * 3) View 바인딩, IME(Next/Done) 설정, 입력 에러 클리어 리스너 연결
+     * 4) 저장된 날짜/연가/병가 값 복원 및 UI 초기 표시
+     * 5) 진행률 프레임 콜백 등록 및 버튼 이벤트 연결
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
@@ -412,6 +441,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // 화면 복귀 시 진행률 갱신 콜백 재등록 및 1년차 잠금 상태 갱신
     @Override
     protected void onResume() {
         super.onResume();
@@ -421,6 +451,7 @@ public class MainActivity extends AppCompatActivity {
         updateFirstYearLockUI();
     }
 
+    // 입영/전역일 및 진행률 UI를 초기 상태로 되돌리고 저장값을 제거
     private void resetDischarge() {
         enlistDate = null;
         dischargeDate = null;
@@ -434,6 +465,7 @@ public class MainActivity extends AppCompatActivity {
         clearEnlistDischargeFromPrefs();
     }
 
+    // 연가/병가를 기본치(1년차 15일, 2년차 13일, 병가 30일)로 재설정하고 저장
     private void resetLeave() {
         leave1Year.set(15, 0, 0);
         leave2Year.set(13, 0, 0);
@@ -451,6 +483,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // EditText 문자열을 정수로 안전 파싱(빈값/오류 시 0 반환)
     private int parse(EditText editText) {
         String str = editText.getText().toString().trim();
         if (str.isEmpty()) return 0;
@@ -461,6 +494,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // 사용자가 입력을 수정할 때 각 EditText의 에러 메시지를 즉시 해제
     private void attachClearErrorOnChange(EditText... edits) {
         for (EditText e : edits) {
             e.addTextChangedListener(new android.text.TextWatcher() {
@@ -471,7 +505,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // 소프트 키보드 숨기기 헬퍼
+    // 현재 포커스된 뷰 기준으로 소프트 키보드 숨김
     private void hideKeyboard(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null && view != null) {
@@ -512,6 +546,7 @@ public class MainActivity extends AppCompatActivity {
 
         return new int[]{d, h, m};
     }
+    // 1년차 연가 사용 가능 여부 계산(입영 1주년의 다음날 00:00부터 잠금)
     // 1주년 '당일'까지는 사용 가능, 다음날 00:00부터 잠금
     private boolean isFirstYearLocked() {
         if (enlistDate == null) return false; // 입영일 미설정이면 잠그지 않음
@@ -521,6 +556,7 @@ public class MainActivity extends AppCompatActivity {
         return System.currentTimeMillis() >= lockStart;
     }
 
+    // 1년차 연가 입력 영역 및 버튼을 잠금/해제하고 안내 태그를 토글
     private void updateFirstYearLockUI() {
         boolean locked = isFirstYearLocked();
 
@@ -544,6 +580,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // 날짜 선택 다이얼로그 표시 → 입영일/전역일 계산 및 즉시 저장, 진행률 갱신
     private void showDatePicker() {
         Calendar now = Calendar.getInstance();
         DatePickerDialog dpd = new DatePickerDialog(this,
@@ -577,6 +614,7 @@ public class MainActivity extends AppCompatActivity {
         dpd.show();
     }
 
+    // 현재 시각 기준 D-day(잔여일)와 진행률(%)을 계산하여 프로그레스바/텍스트 업데이트
     private void updateProgress() {
         if (enlistDate == null || dischargeDate == null) {
             textViewDday.setText("D -");
@@ -621,6 +659,7 @@ public class MainActivity extends AppCompatActivity {
     private void saveEnlistDischargeToPrefs() {
         SharedPreferences prefs = getSharedPreferences("myPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
+        // 입영일이 설정되어 있으면 밀리초로 영구 저장, 없으면 키 제거
         if (enlistDate != null) {
             editor.putLong("enlistMillis", enlistDate.getTimeInMillis());
         } else {
@@ -634,6 +673,7 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    // 저장소에서 입영/전역일 키를 제거(초기화 시 사용)
     // ── 헬퍼: 입영/전역일 키 제거 ───────────────────────────
     private void clearEnlistDischargeFromPrefs() {
         SharedPreferences prefs = getSharedPreferences("myPrefs", MODE_PRIVATE);
@@ -643,6 +683,7 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    // 연가/병가 남은 일·시간·분 값을 SharedPreferences에 저장
     // ── 헬퍼: 휴가(연가/병가) 저장 ───────────────────────────
     private void saveLeaveToPrefs() {
         SharedPreferences prefs = getSharedPreferences("myPrefs", MODE_PRIVATE);
@@ -663,6 +704,7 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    // 백그라운드 전환 시 현재 상태 저장 및 진행률 콜백 해제
     @Override
     protected void onPause() {
         super.onPause();
@@ -674,12 +716,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // 액티비티 종료 시 진행률 콜백 정리
     @Override
     protected void onDestroy() {
         super.onDestroy();
         Choreographer.getInstance().removeFrameCallback(frameCallback);
     }
 
+    // 최초 실행 가이드(바텀시트) 표시 및 실패 시 날짜 선택으로 폴백
     private void showGuideFlow() {
         // 중복 띄우기 방지: 이미 표시 중이면 return
         if (isGuideShowing) return;
@@ -709,6 +753,7 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
+    // 가이드/다이얼로그에서 받은 입영일을 적용하고 전역일 계산 후 UI·저장 갱신
     private void applyStartDate(long startDateMs) {
         Calendar picked = Calendar.getInstance();
         picked.setTimeInMillis(startDateMs);
@@ -733,6 +778,7 @@ public class MainActivity extends AppCompatActivity {
 
         saveEnlistDischargeToPrefs();
     }
+    // 주어진 스크린 좌표가 특정 View의 경계 안에 위치하는지 검사
     // 좌표가 특정 View 내부인지 확인
     private static boolean isTouchInsideView(View view, int rawX, int rawY) {
         if (view == null) return false;
@@ -745,7 +791,7 @@ public class MainActivity extends AppCompatActivity {
         return rawX >= left && rawX <= right && rawY >= top && rawY <= bottom;
     }
 
-    // 현재 터치 지점이 어떤 EditText 위에 있는지 재귀로 검사
+    // 터치 지점이 트리 내 어떤 EditText 위에 있는지 재귀적으로 확인
     private static boolean isTouchOnAnyEditText(View root, int rawX, int rawY) {
         if (root == null) return false;
         if (root instanceof EditText) {
@@ -761,6 +807,11 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    /**
+     * 터치 제스처에 따른 키보드 동작 제어
+     * - 탭으로 판단되면 EditText 외부 탭 시 키보드를 닫고 포커스를 해제
+     * - 스크롤/드래그로 판단되면 키보드를 유지하여 입력 흐름 방해 최소화
+     */
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         switch (ev.getActionMasked()) {

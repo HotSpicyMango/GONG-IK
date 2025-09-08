@@ -29,5 +29,5 @@
     <color name="oneui_ripple">#1F000000</color>
 
     <color name="mainbar">#D7D7D7</color>
-    <color name="progressmain">#009688</color> // 라이트모드 : 메인 프로그레싱바 색상
+    <color name="progressmain">#646464</color> // 라이트모드 : 메인 프로그레싱바 색상
 </resources>
