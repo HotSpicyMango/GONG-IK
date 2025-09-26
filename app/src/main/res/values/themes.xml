@@ -1,7 +1,7 @@
 <resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:fontFamily">@font/pretendard</item>
+        <item name="android:fontFamily">@font/font</item>
         <item name="colorPrimary">@color/oneui_primary</item>
         <item name="colorOnPrimary">@color/oneui_onPrimary</item>
         <item name="colorPrimaryContainer">@color/oneui_primaryContainer</item>

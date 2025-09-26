@@ -21,7 +21,6 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.ViewGroup;
 import android.view.ViewConfiguration;
-
 import androidx.core.content.ContextCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
@@ -32,13 +31,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-/**
- * 메인 화면 액티비티
- * - 입영일/전역일 저장 및 진행률 계산
- * - 1년차/2년차 연가와 병가 잔여분 관리
- * - 최초 실행 가이드(바텀시트) 표시 및 날짜 선택
- * - 키보드/터치 UX 최적화(탭 시 키보드 닫기, 스크롤 시 유지)
- */
 public class MainActivity extends AppCompatActivity {
 
     // 앱 공용 환경설정 이름(최초 실행 여부 등)
@@ -70,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout card1; // 1년차 카드 루트 레이아웃
     private EditText editDays1, editHours1, editMinutes1;
     private Button buttonMinus1;
-    private ProgressBar progress1;
 
     /**
      * 연가/병가 시간을 일/시간/분 단위로 보관·연산하는 데이터 클래스
@@ -304,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        // ✅ 4. SharedPreferences 복원
+        // 4. SharedPreferences 복원
         SharedPreferences prefs = getSharedPreferences("myPrefs", MODE_PRIVATE);
         if (prefs.contains("enlistMillis")) {
             enlistDate = Calendar.getInstance();
@@ -354,7 +345,7 @@ public class MainActivity extends AppCompatActivity {
             textViewEnlistDate.setText("입영일 : " + sdf.format(enlistDate.getTime()));
         }
 
-        // ✅ 7. 버튼 이벤트
+        // 7. 버튼 이벤트
 
         Button btnGuide = findViewById(R.id.btnGuide);
         btnGuide.setOnClickListener(v -> {
@@ -638,8 +629,43 @@ public class MainActivity extends AppCompatActivity {
         } else {
             long diffMillis = dischargeMillis - nowMillis;
             long diffDays = (long) Math.ceil((double) diffMillis / (24 * 60 * 60 * 1000));
-            textViewDday.setText(String.format("D - %d", diffDays));
 
+            // --- 달력 기준 남은 개월/일 계산 ---
+            Calendar today = Calendar.getInstance();
+            Calendar discharge = (Calendar) dischargeDate.clone();
+
+            int years = discharge.get(Calendar.YEAR) - today.get(Calendar.YEAR);
+            int months = discharge.get(Calendar.MONTH) - today.get(Calendar.MONTH);
+            int days = discharge.get(Calendar.DAY_OF_MONTH) - today.get(Calendar.DAY_OF_MONTH);
+
+            // 일수 보정 (음수가 나오면 전 달에서 빌려옴)
+            if (days < 0) {
+                months--;
+                // 오늘 달의 마지막 날 구하기
+                Calendar temp = (Calendar) today.clone();
+                temp.add(Calendar.MONTH, 1);
+                temp.set(Calendar.DAY_OF_MONTH, 1);
+                temp.add(Calendar.DAY_OF_MONTH, -1);
+                int lastDayOfMonth = temp.get(Calendar.DAY_OF_MONTH);
+
+                days += lastDayOfMonth;
+            }
+
+            // 월수 보정 (음수가 나오면 연도에서 빌려옴)
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            // 최종 문자열 조합
+            String ddayText;
+            if (years > 0) {
+                ddayText = String.format("D - %d (%d년 %d개월 %d일)", diffDays, years, months, days);
+            } else {
+                ddayText = String.format("D - %d (%d개월 %d일)", diffDays, months, days);
+            }
+
+            textViewDday.setText(ddayText);
 
             long elapsedMillis = nowMillis - enlistMillis;
             double progress = (double) elapsedMillis / (dischargeMillis - enlistMillis);
@@ -649,7 +675,7 @@ public class MainActivity extends AppCompatActivity {
             int progressValue = (int) (progress * progressBar.getMax());
             progressBar.setProgress(progressValue);
 
-            String percentStr = String.format(Locale.getDefault(), "%.6f%%", progress * 100);
+            String percentStr = String.format(Locale.getDefault(), "%.7f%%", progress * 100);
             textViewProgressPercent.setText(percentStr);
         }
         updateFirstYearLockUI();

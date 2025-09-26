@@ -3,8 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="more">#E7E7E7</color>
-    <color name="button_primary">#1976D2</color>
-    <color name="button_reset">#D32F2F</color>
+    <color name="button_primary">#0072de</color>
+    <color name="button_reset">#CD372C</color>
 
     <color name="progress_leave1">#388E3C</color>
     <color name="progress_leave2">#1976D2</color>
@@ -13,9 +13,6 @@
     <color name="background">#FAFAFA</color>
     <color name="text_primary">#212121</color>
     <color name="text_secondary">#757575</color>
-    <color name="progress_accent">#388E3C</color>        <!-- 파스텔 파랑 -->
-    <color name="progress_background">#C8E6C9</color>     <!-- 밝은 회색 -->
-    <color name="progress_accent2">#1976D2</color>
-    <color name="teal_700">#018786</color>
-
+    <color name="progress_accent2">#036DF6</color>
+    <color name="checkbutton">#00897B</color>
 </resources>

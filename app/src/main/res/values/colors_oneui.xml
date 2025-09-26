@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- One UI Blue (밝고 선명한 블루) -->
-    <color name="oneui_primary">#036DF6</color>
+    <color name="oneui_primary">#0072de</color>
     <color name="oneui_onPrimary">#FFFFFF</color>
     <color name="oneui_primaryContainer">#DBEAFF</color>
     <color name="oneui_onPrimaryContainer">#0A2A6B</color>
@@ -27,7 +27,8 @@
 
     <!-- 리플(One UI는 은은한 잔상) -->
     <color name="oneui_ripple">#1F000000</color>
-
-    <color name="mainbar">#D7D7D7</color>
-    <color name="progressmain">#646464</color> // 라이트모드 : 메인 프로그레싱바 색상
+    <color name="textcolor">#FFFFFF</color>
+    <color name="mainbar">#C5CAE9</color>
+    <color name="progressvacation">#1976D2</color>
+    <color name="progressmain">#1976D2</color> // 라이트모드 : 메인 프로그레싱바 색상
 </resources>

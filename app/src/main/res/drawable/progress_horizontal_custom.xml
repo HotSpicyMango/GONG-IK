@@ -6,7 +6,7 @@
         <item android:id="@android:id/background">
             <shape android:shape="rectangle">
                 <size android:height="24dp" />  <!-- 바 높이 지정 -->
-                <solid android:color="@color/progress_background" />
+                <solid android:color="@color/oneui_primary" />
             </shape>
         </item>
 

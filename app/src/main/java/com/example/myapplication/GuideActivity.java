@@ -72,13 +72,13 @@ public class GuideActivity extends AppCompatActivity {
                             tab.setText("공가");
                             break;
                         case 3:
-                            tab.setText("청원휴가");
+                            tab.setText("청원");
                             break;
                         case 4:
-                            tab.setText("특별휴가");
+                            tab.setText("특별");
                             break;
                         case 5:
-                            tab.setText("앱 정보");
+                            tab.setText("정보");
                             break;
                     }
                 }
