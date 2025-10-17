@@ -1,4 +1,4 @@
-# Pub-Serve
+# PUBSERVE
 
 <img src="https://img.shields.io/badge/platform-Android-blue" />
 <img src="https://img.shields.io/badge/language-Java+Html-red" />
@@ -12,7 +12,7 @@
 
 ### [다운로드 v1.3.0](https://github.com/HotSpicyMango/GONG-IK/releases/download/1.3.0/pubserve.apk)<br>
 ※ 설치 전 '출처를 알 수 없는 앱' 설치 허용이 필요합니다.
-### [변경사항](https://github.com/HotSpicyMango/GONG-IK/releases/tag/1.2)<br>
+### [변경사항](https://github.com/HotSpicyMango/GONG-IK/releases/tag/1.3.0)<br>
 ※ 클릭 시 이동됩니다.
 
 ---
