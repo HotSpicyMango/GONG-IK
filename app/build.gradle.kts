@@ -4,14 +4,14 @@ plugins {
 
 android {
     namespace = "com.example.myapplication"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.mango.pubserve"
         minSdk = 29
         targetSdk = 35
-        versionCode = 6
-        versionName = "1.2.1"
+        versionCode = 10
+        versionName = "1.3.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -32,6 +32,7 @@ android {
 }
 
 dependencies {
+    implementation("io.noties.markwon:core:4.6.2")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

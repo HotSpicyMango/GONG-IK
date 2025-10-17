@@ -26,9 +26,14 @@
     <color name="oneui_onError">#FFFFFF</color>
 
     <!-- 리플(One UI는 은은한 잔상) -->
+    <color name="textcolor_1">#000000</color>
     <color name="oneui_ripple">#1F000000</color>
     <color name="textcolor">#FFFFFF</color>
-    <color name="mainbar">#C5CAE9</color>
+    <color name="mainbar">@color/tab_text_color</color>
     <color name="progressvacation">#1976D2</color>
-    <color name="progressmain">#1976D2</color> // 라이트모드 : 메인 프로그레싱바 색상
+    <color name="progressmain">#000000</color> // 라이트모드 : 메인 프로그레싱바 색상
+    <color name="mainbarstroke">#33000000</color>
+    <color name="confirmtext">#FFFFFF</color>
+    <color name="morebutton">#50000000</color>
+    <color name="reset">#FF0000</color>
 </resources>

@@ -5,16 +5,18 @@
     android:orientation="vertical"
     android:padding="20dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/card_bg">
 
     <!-- 1) 가이드 헤더 -->
     <TextView
         android:id="@+id/guideTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="앱 사용을 환영합니다!"
+        android:text="Welcome to PUBSERVE"
         android:textStyle="bold"
         android:textSize="18sp"
+        android:textColor="@color/textcolor_1"
         android:paddingBottom="8dp"/>
 
     <!-- 2) 스크롤 가능한 본문 (텍스트 + 이미지) -->
@@ -26,21 +28,15 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <!-- 필요 시 앱 내 drawable 이미지를 1~2장 정도 배치 -->
-            <!--
-            <ImageView
+            <TextView
+                android:id="@+id/guideMarkdownView"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/guide_cover" />
-            -->
-
-            <WebView
-                android:id="@+id/guideWebView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/textcolor_1" />
         </LinearLayout>
     </ScrollView>
 
@@ -59,19 +55,19 @@
             android:layout_weight="1"
             android:text="복무 시작일 선택하기"
             style="?attr/materialButtonOutlinedStyle"
-            android:textColor="?attr/colorPrimary"
-            app:strokeColor="?attr/colorPrimary"
+            android:textColor="@color/textcolor_1"
+            app:strokeColor="@color/textcolor_1"
             app:strokeWidth="2dp"/>
 
         <Space
             android:layout_width="12dp"
             android:layout_height="wrap_content"/>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnConfirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="확인"/>
+            android:text="확인" />
     </LinearLayout>
 
 </LinearLayout>

@@ -17,6 +17,8 @@
         <item name="colorError">@color/oneui_error</item>
         <item name="colorOnError">@color/oneui_onError</item>
         <item name="colorControlHighlight">@color/oneui_ripple</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="elevationOverlayEnabled">false</item>
     </style>
 
     <style name="Theme.MyApplication" parent="Base.Theme.MyApplication"/>

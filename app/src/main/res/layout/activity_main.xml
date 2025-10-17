@@ -8,6 +8,7 @@
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
@@ -24,9 +25,14 @@
             android:id="@+id/mainLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipChildren="true"
             android:clipToPadding="false"
             android:orientation="vertical"
             android:paddingBottom="24dp">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,25 +40,26 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Button
+                <android.widget.Button
                     android:id="@+id/btnGuide"
-                    android:textColor="@color/textcolor"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
-                    android:backgroundTint="@color/oneui_primary"
-                    android:text="더보기" />
+                    android:background="@drawable/button_blue_border"
+                    android:text="더보기"
+                    android:textColor="@color/textcolor_1" />
 
-                <Button
+                <android.widget.Button
                     android:id="@+id/button2"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_margin="10dp"
-                    android:backgroundTint="@color/button_reset"
+                    android:background="@drawable/button_red_border"
                     android:text="초기화"
-                    android:textColor="@color/textcolor" />
+                    android:textColor="@color/textcolor_1" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -63,54 +70,80 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp">
 
-                <TextView
-                    android:id="@+id/textViewDischargeDate2"
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="8dp"
-                    android:paddingBottom="3dp"
-                    android:text="입영일 : "
-                    android:textSize="15sp" />
+                    android:adjustViewBounds="true"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="4dp"
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="#33FFFFFF"
+                    app:strokeWidth="1.5dp">
 
-                <TextView
-                    android:id="@+id/textViewDischargeDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="8dp"
-                    android:paddingBottom="3dp"
-                    android:text="전역일 : "
-                    android:textSize="20sp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00FFFFFF"
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
-                <!-- 디데이 및 진행률 -->
+                        <TextView
+                            android:id="@+id/textViewDischargeDate2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="3dp"
+                            android:text="입영일 : "
+                            android:textColor="@color/textcolor_1"
+                            android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/textViewDday"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="8dp"
-                    android:paddingBottom="3dp"
-                    android:text="D - "
-                    android:textSize="20sp" />
+                        <TextView
+                            android:id="@+id/textViewDischargeDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:paddingBottom="3dp"
+                            android:text="전역일 : "
+                            android:textColor="@color/textcolor_1"
+                            android:textSize="17sp" />
 
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
-                    android:max="100"
-                    android:progress="0"
-                    android:progressTint="@color/progressmain" />
+                        <TextView
+                            android:id="@+id/textViewDday"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:paddingBottom="3dp"
+                            android:text="D - "
+                            android:textColor="@color/textcolor_1"
+                            android:textStyle="bold"
+                            android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/textViewProgressPercent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="8dp"
-                    android:paddingBottom="8dp"
-                    android:text="0%"
-                    android:textSize="14sp" />
+                        <ProgressBar
+                            android:id="@+id/progressBar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="3dp"
+                            android:max="100"
+                            android:progress="0"
+                            android:progressTint="@color/progressmain" />
 
+                        <TextView
+                            android:id="@+id/textViewProgressPercent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:paddingBottom="8dp"
+                            android:paddingRight="5dp"
+                            android:text="0%"
+                            android:fontFamily="@font/d2c"
+                            android:layout_gravity="right"
+                            android:textColor="@color/textcolor_1"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
 
             <LinearLayout
@@ -121,20 +154,22 @@
                 android:orientation="vertical">
 
 
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardBackgroundColor="@color/card_bg"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="6dp"
-                    app:cardUseCompatPadding="true">
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="#33FFFFFF"
+                    app:strokeWidth="1.5dp">
 
-                    <!-- View1: 1년차 연가 -->
                     <LinearLayout
                         android:id="@+id/card1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
+                        android:background="@android:color/transparent"
                         android:orientation="vertical"
                         android:padding="12dp">
 
@@ -143,6 +178,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1년차 연가"
+                            android:textColor="@color/textcolor_1"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -151,7 +187,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="총 15일 중 남은 1년차 연차 : 15일 0시간 0분" />
+                            android:text="총 15일 중 남은 1년차 연차 : 15일 0시간 0분"
+                            android:textColor="@color/textcolor_1" />
 
                         <ProgressBar
                             android:id="@+id/progress1"
@@ -162,8 +199,7 @@
                             android:backgroundTint="@color/oneui_primary"
                             android:max="100"
                             android:progress="100"
-                            android:progressTint="@color/progressvacation" />
-
+                            android:progressTint="@color/progressmain" />
                         <!-- 입력 필드와 버튼 추가 -->
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -206,29 +242,30 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
-                                android:backgroundTint="@color/checkbutton"
+                                android:backgroundTint="@color/progressmain"
                                 android:text="✓"
-                                android:textColor="@android:color/white" />
+                                android:textStyle="bold"
+                                android:textColor="@color/confirmtext" />
                         </LinearLayout>
                     </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardBackgroundColor="@color/card_bg"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="6dp"
-                    app:cardUseCompatPadding="true">
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="#33FFFFFF"
+                    app:strokeWidth="1.5dp">
 
-                    <!-- View2: 2년차 연가 -->
                     <LinearLayout
                         android:id="@+id/card2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
+                        android:background="@android:color/transparent"
                         android:orientation="vertical"
                         android:padding="12dp">
 
@@ -237,6 +274,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="2년차 연가"
+                            android:textColor="@color/textcolor_1"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -245,7 +283,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="남은 2년차 연차 : 13일 0시간 0분" />
+                            android:text="남은 2년차 연차 : 13일 0시간 0분"
+                            android:textColor="@color/textcolor_1" />
 
                         <ProgressBar
                             android:id="@+id/progress2"
@@ -256,8 +295,7 @@
                             android:backgroundTint="@color/oneui_primary"
                             android:max="100"
                             android:progress="100"
-                            android:progressTint="@color/progressvacation" />
-
+                            android:progressTint="@color/progressmain" />
                         <!-- 입력 필드와 버튼 추가 -->
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -300,31 +338,32 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
-                                android:backgroundTint="@color/checkbutton"
+                                android:backgroundTint="@color/progressmain"
                                 android:text="✓"
-                                android:textColor="@android:color/white" />
+                                android:textStyle="bold"
+                                android:textColor="@color/confirmtext"/>
                         </LinearLayout>
                     </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
                     app:cardBackgroundColor="@color/card_bg"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="6dp"
-                    app:cardUseCompatPadding="true">
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="#33FFFFFF"
+                    app:strokeWidth="1.5dp">
 
-                    <!-- View3: 병가 -->
                     <LinearLayout
                         android:id="@+id/card3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
+                        android:background="@android:color/transparent"
                         android:orientation="vertical"
-
                         android:padding="12dp">
 
                         <TextView
@@ -332,6 +371,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="병가"
+                            android:textColor="@color/textcolor_1"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -340,7 +380,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="남은 병가 : 30일 0시간 0분" />
+                            android:text="남은 병가 : 30일 0시간 0분"
+                            android:textColor="@color/textcolor_1" />
 
                         <ProgressBar
                             android:id="@+id/progress3"
@@ -351,8 +392,7 @@
                             android:backgroundTint="@color/oneui_primary"
                             android:max="100"
                             android:progress="100"
-                            android:progressTint="@color/progressvacation" />
-
+                            android:progressTint="@color/progressmain" />
                         <!-- 입력 필드와 버튼 추가 -->
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -395,13 +435,51 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
-                                android:backgroundTint="@color/checkbutton"
+                                android:backgroundTint="@color/progressmain"
                                 android:text="✓"
-                                android:textColor="@android:color/white" />
+                                android:textStyle="bold"
+                                android:textColor="@color/confirmtext" />
                         </LinearLayout>
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="-12dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="-48dp" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="-281dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="-44dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

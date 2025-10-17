@@ -20,7 +20,12 @@
     <color name="oneui_ripple">#33FFFFFF</color>
     <color name="mainbar">#3A3A3A</color>
     <color name="progressvacation">#90CAF9</color>
-    <color name="progressmain">#90CAF9</color> // 다크모드 : 메인 프로그레싱바 색상
-    <color name="checkbutton">#4DB6AC</color>
+    <color name="confirmtext">#000000</color>
+    <color name="progressmain">#FFFFFF</color> // 다크모드 : 메인 프로그레싱바 색상
+    <color name="checkbutton">#90CAF9</color>
     <color name="textcolor">#000000</color>
+    <color name="textcolor_1">#FFFFFF</color>
+    <color name="mainbarstroke">#33FFFFFF</color>
+    <color name="morebutton">#70FFFFFF</color>
+    <color name="reset">#FF1D1D</color>
 </resources>

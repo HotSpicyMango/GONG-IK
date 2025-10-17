@@ -6,11 +6,13 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.view.inputmethod.InputMethodManager;
 import android.view.View;
@@ -30,6 +32,16 @@ import androidx.fragment.app.FragmentManager;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import android.graphics.RenderEffect;
+import android.graphics.Shader;
+import android.os.Build;
+import android.view.View;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.view.ViewGroup;
+import androidx.core.graphics.ColorUtils;
+
+import android.view.ViewOutlineProvider;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -173,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         // 가장 대중적인 키보드 동작: 레이아웃 리사이즈
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
@@ -218,10 +231,8 @@ public class MainActivity extends AppCompatActivity {
         textRemaining2 = findViewById(R.id.remaining2);
         textRemaining3 = findViewById(R.id.remaining3);
 
-//        EditText editDays1 = findViewById(R.id.editDays1);
-//        EditText editHours1 = findViewById(R.id.editHours1);
-//        EditText editMinutes1 = findViewById(R.id.editMinutes1);
-//        Button buttonMinus1 = findViewById(R.id.buttonMinus1);
+
+
         editDays1 = findViewById(R.id.editDays1);
         editHours1 = findViewById(R.id.editHours1);
         editMinutes1 = findViewById(R.id.editMinutes1);
@@ -561,7 +572,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (textRemaining1 != null) {
             String base = textRemaining1.getText().toString();
-            String tag = "\n\n<1년차 연가 사용 불가>";
+            String tag = "\n\n<사용 불가>";
             if (locked && !base.contains(tag)) {
                 textRemaining1.setText(base + tag);
             } else if (!locked && base.contains(tag)) {
@@ -660,9 +671,9 @@ public class MainActivity extends AppCompatActivity {
             // 최종 문자열 조합
             String ddayText;
             if (years > 0) {
-                ddayText = String.format("D - %d (%d년 %d개월 %d일)", diffDays, years, months, days);
+                ddayText = String.format("D-%d (%d년 %d개월 %d일)", diffDays, years, months, days);
             } else {
-                ddayText = String.format("D - %d (%d개월 %d일)", diffDays, months, days);
+                ddayText = String.format("D-%d (%d개월 %d일)", diffDays, months, days);
             }
 
             textViewDday.setText(ddayText);

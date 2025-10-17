@@ -6,12 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.webkit.WebView;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.datepicker.MaterialDatePicker;
+import io.noties.markwon.Markwon;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class GuideBottomSheetDialogFragment extends BottomSheetDialogFragment {
 
@@ -45,12 +50,31 @@ public class GuideBottomSheetDialogFragment extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.dialog_guide_bottomsheet, container, false);
-        WebView webView = v.findViewById(R.id.guideWebView);
-        webView.getSettings().setJavaScriptEnabled(false);
-        webView.loadUrl("file:///android_asset/guide.html");
+        TextView markdownView = v.findViewById(R.id.guideMarkdownView);
+
+        try {
+            // Markdown 파일 읽기
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(requireContext().getAssets().open("guide.md"))
+            );
+            StringBuilder mdBuilder = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                mdBuilder.append(line).append("\n");
+            }
+            reader.close();
+
+            // Markwon으로 Markdown 렌더링
+            Markwon markwon = Markwon.builder(requireContext())
+                    .build();
+
+            markwon.setMarkdown(markdownView, mdBuilder.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         // 단일 페이지 가이드: 탭/뷰페이저 없음
-
         Button btnPick = v.findViewById(R.id.btnPickStartDate);
         Button btnOk   = v.findViewById(R.id.btnConfirm);
         btnOk.setEnabled(false);
