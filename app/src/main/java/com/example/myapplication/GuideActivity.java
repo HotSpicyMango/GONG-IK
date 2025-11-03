@@ -26,7 +26,6 @@ public class GuideActivity extends AppCompatActivity {
         if (toolbar.getNavigationIcon() != null) {
             toolbar.getNavigationIcon().setTint(textColor);
         }
-        getSupportActionBar().setTitle("");
 
         // 상태바 높이만큼 padding 추가
         int statusBarHeight = 0;
@@ -40,13 +39,7 @@ public class GuideActivity extends AppCompatActivity {
         if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
             toolbar.setBackgroundColor(Color.parseColor("#000000")); // Black
         } else {
-            toolbar.setBackgroundColor(Color.parseColor("#454545")); // 라이트모드에서 진한 회색
-        }
-
-        if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
-            getWindow().setStatusBarColor(Color.parseColor("#121212")); // 시스템 UI 색도 어둡게
-        } else {
-            getWindow().setStatusBarColor(Color.parseColor("#212121")); // 라이트모드에서 진한 회색
+            toolbar.setBackgroundColor(Color.parseColor("#454545")); // 진한 회색
         }
 
         // ViewPager2 + TabLayout 연결

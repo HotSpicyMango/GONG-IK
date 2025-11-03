@@ -13,17 +13,15 @@
         android:minHeight="?attr/actionBarSize"
         app:titleTextColor="@color/textcolor_1"
         app:title="유용한 정보"
-        android:fitsSystemWindows="true"
-        android:paddingTop="0dp"
-        android:paddingBottom="0dp"/>
+        android:fitsSystemWindows="true"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabIndicatorColor="@color/textcolor_1"
-        app:tabTextColor="?attr/colorOnSurfaceVariant"
-        app:tabSelectedTextColor="?attr/colorPrimary" />
+        app:tabTextColor="@color/text_secondary"
+        app:tabSelectedTextColor="@color/textcolor_1" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
