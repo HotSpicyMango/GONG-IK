@@ -165,9 +165,27 @@ public class MainActivity extends AppCompatActivity {
 
     // 연가/병가 남은 시간 텍스트를 갱신하고 사용자에게 표시
     private void updateLeaveDisplay() {
-        textRemaining1.setText(leave1Year.toDisplayString("총 15일 중 남은 1년차 연가"));
-        textRemaining2.setText(leave2Year.toDisplayString("총 13일 중 남은 2년차 연가"));
-        textRemaining3.setText(sickLeave.toDisplayString("총 30일 중 남은 병가"));
+        TextView remaining1Left = findViewById(R.id.remaining1_left);
+        TextView remaining1Right = findViewById(R.id.remaining1_right);
+        TextView remaining2Left = findViewById(R.id.remaining2_left);
+        TextView remaining2Right = findViewById(R.id.remaining2_right);
+        TextView remaining3Left = findViewById(R.id.remaining3_left);
+        TextView remaining3Right = findViewById(R.id.remaining3_right);
+
+        remaining1Left.setText(String.format(Locale.getDefault(),
+                "%d일 %d시간 %d분",
+                leave1Year.getDays(), leave1Year.getHours(), leave1Year.getMinutes()));
+        remaining1Right.setText(" / 15일");
+
+        remaining2Left.setText(String.format(Locale.getDefault(),
+                "%d일 %d시간 %d분",
+                leave2Year.getDays(), leave2Year.getHours(), leave2Year.getMinutes()));
+        remaining2Right.setText(" / 13일");
+
+        remaining3Left.setText(String.format(Locale.getDefault(),
+                "%d일 %d시간 %d분",
+                sickLeave.getDays(), sickLeave.getHours(), sickLeave.getMinutes()));
+        remaining3Right.setText(" / 30일");
     }
 
     private TextView textRemaining1, textRemaining2, textRemaining3;
@@ -227,9 +245,9 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         progressBar.setMax(10000);
         progressBar.setProgressDrawable(ContextCompat.getDrawable(this, R.drawable.progress_bar_rounded));
-        textRemaining1 = findViewById(R.id.remaining1);
-        textRemaining2 = findViewById(R.id.remaining2);
-        textRemaining3 = findViewById(R.id.remaining3);
+        textRemaining1 = findViewById(R.id.remaining1_left);
+        textRemaining2 = findViewById(R.id.remaining2_left);
+        textRemaining3 = findViewById(R.id.remaining3_left);
 
 
 
@@ -341,19 +359,18 @@ public class MainActivity extends AppCompatActivity {
         updateFirstYearLockUI();
 
         // ✅ 6. 날짜 복원 시 진행률 시작
-        if (enlistDate != null && dischargeDate != null) {
+        if (enlistDate != null) {
+            if (dischargeDate == null) {
+                dischargeDate = (Calendar) enlistDate.clone();
+                dischargeDate.add(Calendar.MONTH, SERVICE_MONTHS);
+                dischargeDate.add(Calendar.DAY_OF_MONTH, -1);
+            }
             updateProgress();
             updateFirstYearLockUI();
             Choreographer.getInstance().postFrameCallback(frameCallback);
-            // 🔹 전역일 텍스트 표시 추가
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault());
-            textViewEnlistDate.setText("입영일 : " + sdf.format(enlistDate.getTime()));
-            textViewDischargeDate.setText("전역일 : " + sdf.format(dischargeDate.getTime()));
-        }
-
-        if (enlistDate != null) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault());
-            textViewEnlistDate.setText("입영일 : " + sdf.format(enlistDate.getTime()));
+            textViewEnlistDate.setText(sdf.format(enlistDate.getTime()));
+            textViewDischargeDate.setText(" ~ " + sdf.format(dischargeDate.getTime()));
         }
 
         // 7. 버튼 이벤트
@@ -457,8 +474,8 @@ public class MainActivity extends AppCompatActivity {
     private void resetDischarge() {
         enlistDate = null;
         dischargeDate = null;
-        textViewEnlistDate.setText("입영일 : ");
-        textViewDischargeDate.setText("전역일 : ");
+        textViewEnlistDate.setText("");
+        textViewDischargeDate.setText(" ~ ");
         textViewDday.setText("D - ");
         textViewProgressPercent.setText("0%");
         progressBar.setProgress(0);
@@ -596,8 +613,8 @@ public class MainActivity extends AppCompatActivity {
                     dischargeDate.add(Calendar.DAY_OF_MONTH, -1);  // 하루 빼기
 
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault());
-                    textViewEnlistDate.setText("입영일 : " + sdf.format(enlistDate.getTime()));
-                    textViewDischargeDate.setText("전역일 : " + sdf.format(dischargeDate.getTime()));
+                    textViewEnlistDate.setText(sdf.format(enlistDate.getTime()));
+                    textViewDischargeDate.setText(" ~ " + sdf.format(dischargeDate.getTime()));
 
                     updateProgress();
                     updateFirstYearLockUI();
@@ -620,6 +637,8 @@ public class MainActivity extends AppCompatActivity {
     private void updateProgress() {
         if (enlistDate == null || dischargeDate == null) {
             textViewDday.setText("D -");
+            TextView textViewDday2 = findViewById(R.id.dday_2);
+            if (textViewDday2 != null) textViewDday2.setText("");
             textViewProgressPercent.setText("0%");
             progressBar.setProgress(0);
             return;
@@ -631,10 +650,14 @@ public class MainActivity extends AppCompatActivity {
 
         if (nowMillis < enlistMillis) {
             textViewDday.setText("입대 전");
+            TextView textViewDday2 = findViewById(R.id.dday_2);
+            if (textViewDday2 != null) textViewDday2.setText("");
             textViewProgressPercent.setText("0%");
             progressBar.setProgress(0);
         } else if (nowMillis >= dischargeMillis) {
             textViewDday.setText("전역");
+            TextView textViewDday2 = findViewById(R.id.dday_2);
+            if (textViewDday2 != null) textViewDday2.setText("");
             textViewProgressPercent.setText("100%");
             progressBar.setProgress(progressBar.getMax());
         } else {
@@ -669,14 +692,16 @@ public class MainActivity extends AppCompatActivity {
             }
 
             // 최종 문자열 조합
-            String ddayText;
+            String ddayText = String.format(Locale.getDefault(), "D-%d", diffDays);
+            String remainText;
             if (years > 0) {
-                ddayText = String.format("D-%d (%d년 %d개월 %d일)", diffDays, years, months, days);
+                remainText = String.format(Locale.getDefault(), "%d년 %d개월 %d일", years, months, days);
             } else {
-                ddayText = String.format("D-%d (%d개월 %d일)", diffDays, months, days);
+                remainText = String.format(Locale.getDefault(), "%d개월 %d일", months, days);
             }
-
             textViewDday.setText(ddayText);
+            TextView textViewDday2 = findViewById(R.id.dday_2);
+            if (textViewDday2 != null) textViewDday2.setText(remainText);
 
             long elapsedMillis = nowMillis - enlistMillis;
             double progress = (double) elapsedMillis / (dischargeMillis - enlistMillis);
@@ -805,8 +830,8 @@ public class MainActivity extends AppCompatActivity {
         dischargeDate.add(Calendar.DAY_OF_MONTH, -1);
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault());
-        textViewEnlistDate.setText("입영일 : " + sdf.format(enlistDate.getTime()));
-        textViewDischargeDate.setText("전역일 : " + sdf.format(dischargeDate.getTime()));
+        textViewEnlistDate.setText(sdf.format(enlistDate.getTime()));
+        textViewDischargeDate.setText(" ~ " + sdf.format(dischargeDate.getTime()));
 
         updateProgress();
         updateFirstYearLockUI();

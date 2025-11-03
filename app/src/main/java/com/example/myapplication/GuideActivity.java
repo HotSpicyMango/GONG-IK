@@ -38,9 +38,9 @@ public class GuideActivity extends AppCompatActivity {
         // 💡 다크모드일 때 툴바 배경 어둡게 설정
         int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
-            toolbar.setBackgroundColor(Color.parseColor("#1f1f1f")); // 어두운 회색
+            toolbar.setBackgroundColor(Color.parseColor("#000000")); // Black
         } else {
-            toolbar.setBackgroundColor(Color.parseColor("#1976D2")); // 라이트모드에서 진한 회색
+            toolbar.setBackgroundColor(Color.parseColor("#454545")); // 라이트모드에서 진한 회색
         }
 
         if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {

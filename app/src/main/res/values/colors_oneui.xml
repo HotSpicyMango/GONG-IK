@@ -30,7 +30,7 @@
     <color name="oneui_ripple">#1F000000</color>
     <color name="textcolor">#FFFFFF</color>
     <color name="mainbar">@color/tab_text_color</color>
-    <color name="progressvacation">#1976D2</color>
+    <color name="progressvacation">#2962FF</color>
     <color name="progressmain">#000000</color> // 라이트모드 : 메인 프로그레싱바 색상
     <color name="mainbarstroke">#33000000</color>
     <color name="confirmtext">#FFFFFF</color>

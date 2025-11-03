@@ -13,16 +13,16 @@
         android:id="@+id/guideTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
         android:text="Welcome to PUBSERVE"
-        android:textStyle="bold"
-        android:textSize="18sp"
         android:textColor="@color/textcolor_1"
-        android:paddingBottom="8dp"/>
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <!-- 2) 스크롤 가능한 본문 (텍스트 + 이미지) -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:fillViewport="true">
 
         <LinearLayout

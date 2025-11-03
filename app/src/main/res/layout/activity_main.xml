@@ -32,7 +32,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="10dp" />
+                android:layout_height="5dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -88,44 +88,73 @@
                         android:orientation="vertical"
                         android:padding="8dp">
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
                         <TextView
                             android:id="@+id/textViewDischargeDate2"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
                             android:paddingTop="5dp"
                             android:paddingBottom="3dp"
-                            android:text="입영일 : "
+                            android:text="입영일"
                             android:textColor="@color/textcolor_1"
-                            android:textSize="12sp" />
+                            android:textSize="15sp" />
 
-                        <TextView
-                            android:id="@+id/textViewDischargeDate"
+                            <TextView
+                                android:id="@+id/textViewDischargeDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="3dp"
+                                android:text=" ~ 전역일"
+                                android:textColor="@color/textcolor_1"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@android:color/transparent"
-                            android:paddingBottom="3dp"
-                            android:text="전역일 : "
-                            android:textColor="@color/textcolor_1"
-                            android:textSize="17sp" />
+                            android:layout_marginTop="4dp">
 
-                        <TextView
-                            android:id="@+id/textViewDday"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@android:color/transparent"
-                            android:paddingBottom="3dp"
-                            android:text="D - "
-                            android:textColor="@color/textcolor_1"
-                            android:textStyle="bold"
-                            android:textSize="20sp" />
+                            <TextView
+                                android:id="@+id/textViewDday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:text="D - 000"
+                                android:textColor="@color/textcolor_1"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
 
+                            <TextView
+                                android:id="@+id/dday_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:background="@android:color/transparent"
+                                android:text="1년 9개월 0일"
+                                android:textColor="@color/textcolor_1"
+                                android:paddingStart="10dp"
+                                app:layout_constraintTop_toTopOf="@id/textViewDday"
+                                app:layout_constraintBottom_toBottomOf="@id/textViewDday"
+                                app:layout_constraintStart_toEndOf="@id/textViewDday" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
                         <ProgressBar
                             android:id="@+id/progressBar"
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="3dp"
+                            android:layout_marginTop="7dp"
                             android:max="100"
                             android:progress="0"
                             android:progressTint="@color/progressmain" />
@@ -142,6 +171,7 @@
                             android:layout_gravity="right"
                             android:textColor="@color/textcolor_1"
                             android:textSize="16sp" />
+
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
@@ -182,13 +212,27 @@
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/remaining1"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="총 15일 중 남은 1년차 연차 : 15일 0시간 0분"
-                            android:textColor="@color/textcolor_1" />
+                            android:orientation="horizontal"
+                            android:layout_marginTop="4dp">
+                            <TextView
+                                android:id="@+id/remaining1_left"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="15일 0시간 0분"
+                                android:textStyle="bold"
+                                android:textColor="@color/textcolor_1"
+                                android:textSize="14sp" />
+                            <TextView
+                                android:id="@+id/remaining1_right"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" / 15일"
+                                android:textColor="@color/textcolor_1"
+                                android:textSize="14sp" />
+                        </LinearLayout>
 
                         <ProgressBar
                             android:id="@+id/progress1"
@@ -278,13 +322,27 @@
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/remaining2"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="남은 2년차 연차 : 13일 0시간 0분"
-                            android:textColor="@color/textcolor_1" />
+                            android:orientation="horizontal"
+                            android:layout_marginTop="4dp">
+                            <TextView
+                                android:id="@+id/remaining2_left"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:text="13일 0시간 0분"
+                                android:textColor="@color/textcolor_1"
+                                android:textSize="14sp" />
+                            <TextView
+                                android:id="@+id/remaining2_right"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" / 13일"
+                                android:textColor="@color/textcolor_1"
+                                android:textSize="14sp" />
+                        </LinearLayout>
 
                         <ProgressBar
                             android:id="@+id/progress2"
@@ -375,13 +433,27 @@
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/remaining3"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="남은 병가 : 30일 0시간 0분"
-                            android:textColor="@color/textcolor_1" />
+                            android:orientation="horizontal"
+                            android:layout_marginTop="4dp">
+                            <TextView
+                                android:id="@+id/remaining3_left"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:text="30일 0시간 0분"
+                                android:textColor="@color/textcolor_1"
+                                android:textSize="14sp" />
+                            <TextView
+                                android:id="@+id/remaining3_right"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" / 30일"
+                                android:textColor="@color/textcolor_1"
+                                android:textSize="14sp" />
+                        </LinearLayout>
 
                         <ProgressBar
                             android:id="@+id/progress3"

@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
-        app:titleTextColor="?attr/colorPrimary"
+        app:titleTextColor="@color/textcolor_1"
+        app:title="유용한 정보"
         android:fitsSystemWindows="true"
         android:paddingTop="0dp"
         android:paddingBottom="0dp"/>
@@ -20,7 +21,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabIndicatorColor="?attr/colorPrimary"
+        app:tabIndicatorColor="@color/textcolor_1"
         app:tabTextColor="?attr/colorOnSurfaceVariant"
         app:tabSelectedTextColor="?attr/colorPrimary" />
 
